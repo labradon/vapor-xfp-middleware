@@ -20,6 +20,6 @@ public struct XFPMiddleware: Middleware {
             return try next.respond(to: request)
         }
         let redirectPath = request.http.urlString.replacingOccurrences(of: "http://", with: "https://")
-        return request.future(request.redirect(to: redirectPath, type: RedirectType.temporary))
+        return request.future(request.redirect(to: redirectPath, type: RedirectType.normal))
     }
 }

@@ -29,7 +29,8 @@ class XFPMiddlewareTests: XCTestCase {
     func testHTTP() throws {
         let request = Request(http: .init(method: .GET, url: "/", headers: .init([("X-Forwarded-Proto", "http")])), using: app)
         let response = try app.make(Responder.self).respond(to: request).wait()
-        XCTAssert(response.http.status == .temporaryRedirect)
+        print(response.http.status)
+        XCTAssert(response.http.status == .seeOther)
     }
     
     func testHTTPS() throws {
